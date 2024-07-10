@@ -1,0 +1,44 @@
+.header{
+    font-weight: 300;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    align-items: center;
+    padding: 0 80px;    
+    .logoBox {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        h2{
+          font-family: 'ClashDisplay-Variable';
+          font-weight: 900;
+          font-size: 1.8em;
+          margin-right: 60px;
+        }
+        .navigation {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            gap: 30px;
+            a{
+                height: 100%;
+                display: flex;
+                align-items: center;
+                font-size: 1.1em;
+                color: var(--txt);
+                font-weight: 400;
+            }
+        }
+    }
+
+    .right {
+      display: flex;
+      flex-direction: row-reverse;
+      .account{
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+}

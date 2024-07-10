@@ -1,11 +1,11 @@
-
 interface INavigation {
-    label: string
-    href: string
+    label: string;
+    href: string;
+    isCategory?: boolean | false;
     nested?: INavigation[]
 }
 
-export const navigation: INavigation[] = [
+export const navigationData: INavigation[] = [
     {
         label: 'Home',
         href: '/'
@@ -13,6 +13,7 @@ export const navigation: INavigation[] = [
     {
         label: 'Categories',
         href: '/categories',
+        isCategory: true,
         nested: [
             {
                 label: 'Men',
@@ -65,5 +66,13 @@ export const navigation: INavigation[] = [
                 ]
             }
         ]
+    },
+    {
+        label: 'About',
+        href: '/about'
+    },
+    {
+        label: 'Contact',
+        href: '/contact'
     }
 ]
