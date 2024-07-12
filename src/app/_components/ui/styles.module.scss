@@ -6,6 +6,7 @@
     height: 70px;
     align-items: center;
     padding: 0 80px;    
+    border-bottom: 1px solid var(--border);
     .logoBox {
         display: flex;
         height: 100%;
@@ -20,25 +21,416 @@
             display: flex;
             align-items: center;
             height: 100%;
+            position: relative;
             gap: 30px;
             a{
-                height: 100%;
-                display: flex;
-                align-items: center;
-                font-size: 1.1em;
-                color: var(--txt);
-                font-weight: 400;
+              height: 100%;
+              display: flex;
+              align-items: center;
+              font-size: 1.1em;
+              color: var(--txt);
+              font-weight: 400;
             }
+            .categoryLink{
+              display: flex;
+              align-items: center;
+              position: relative;
+              &::before{
+                content: "";
+                position: absolute;
+                width: 120px;
+                height: 40px;
+                left: 0;
+                top: 40px;
+                display: none;
+              }
+              &:hover svg{
+                transform: rotate(-180deg);
+              }
+              &:hover::before{
+                display: block;
+              }
+              &:hover ~ .categoryList{
+                opacity: 1;
+                pointer-events: all;
+                transform: translateX(0%) scale(1);
+              }
+              svg{
+                transition: all 0.2s ease;
+                height: fit-content;
+                width: 24px;
+                transition-delay: 0.05s;
+              }
+          }
+          .categoryList{
+            position: absolute;
+            top: 110%;
+            background-color: var(--bgPriamary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            display: flex;
+            padding: 20px 15px;
+            width: fit-content;
+            left: 0;
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(1);
+            transition: all 0.2s ease;
+            transition-delay: 0.05s;
+            &:hover ~ .categoryLink{
+              background-color: red;
+            }
+            &:hover{
+              pointer-events: all;
+              opacity: 1;
+              transform: translateX(0%) scale(1);
+            }
+            .cell{
+              display: flex;
+              flex-direction: column;
+              margin: 0px 30px;
+              h3{
+                color: var(--txtPrimary);
+                font-size: 0.9em;
+              }
+              .links{
+                margin-top: 10px;
+                animation-delay: inherit;
+                a{
+                  padding: 0;
+                  height: fit-content;
+                  margin: 0;
+                  white-space: nowrap;
+                  font-size: 1em;
+                  margin-bottom: 10px;
+                  animation-duration: 0.2s;
+                  animation-delay: inherit;
+                  animation-timing-function:linear;
+                }
+              }
+            }
+          }
         }
     }
 
     .right {
       display: flex;
       flex-direction: row-reverse;
+      height: 100%;
+      align-items: center;
       .account{
-        position: absolute;
-        top: 0;
-        right: 0;
+        margin-right: 10px;
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        .accountLink{
+          color: var(--txt);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.1em;
+          font-weight: 400; 
+          position: relative;
+          &::before{
+            display: none;
+            content: "";
+            width: 100px;
+            height: 34px;
+            position: absolute;
+            top: 20px;
+          }
+          &:hover::before{
+            display: block;
+          }
+          &:hover ~.dropdown{
+            pointer-events: all;
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
+          }
+          svg{
+            color: var(--txt);
+            height: fit-content;
+            width: 24px;
+            margin-left: 7px;
+          }
+        }
+        .dropdown {
+          opacity: 0;
+          position: absolute;
+          display: flex;
+          flex-direction: column;
+          background-color: var(--bgPrimary);
+          border: 1px solid var(--border);
+          border-radius: 20px;
+          min-width: 140px;
+          padding: 10px 15px;
+          top: 110%;
+          left: 50%;
+          transition: all 0.2s ease;
+          transition-delay: 0.05s;
+          transform: translateX(-50%) scale(0.9);
+          pointer-events: none;
+          &:hover{
+            pointer-events: all;
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
+          }
+          a{
+            display: flex;
+            padding: 5px 0px;
+            width: 100%;
+            justify-content: flex-start;
+            font-size: 1em;
+            color: var(--txtPrimary);
+            font-weight: 400;
+            &:hover{
+              color: var(--txt);
+            }
+          }
+          h3{
+            font-size: 1em;
+            margin-bottom: 10px;
+          }
+        }
+      }
+      .cartLink {
+        font-size: 1.1em;
+        position: relative;
+        display: flex;
+        align-items: center;
+        .cartCount {
+          position: absolute;
+          background-color: var(--red);
+          color: var(--txtLight);
+          font-size: 0.6em;
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          display: flex;
+          top: 0;
+          right: 0;
+          align-items: center;
+          justify-content: center;
+        }
+        span{
+          font-size: 1.1em;
+          color: var(--txt);
+          font-weight: 400;
+        }
+        svg{
+          color: var(--txt);
+          height: fit-content;
+          width: 24px;
+          margin-left: 7px;
+        }
+      }
+      .searchBox {
+        margin-right: 25px;
+        .searchInput {
+          display: flex;
+          flex-direction: row-reverse;
+          border: 1px solid var(--border);
+          border-radius: 50px;
+          height: 40px;
+          align-items: center;
+          padding: 0 10px;
+          padding-left: 0;
+          max-width: 200px;
+          input{
+            background-color: transparent;
+            outline: none;
+            border: none;
+            font-size: 1em;
+            height: 100%;
+            width: 140px;
+          }
+          span{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            &:hover{
+              background-color: var(--bgPrimary);
+            }
+            svg{
+              height: 100%;
+            }
+          }
+        }
+      }
+      .noAccount{
+        display: flex;
+        flex-direction: row;
+        // background-color: var(--txt);
+        border: 1px solid var(--border);
+        min-height: 40px;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        padding: 0px 5px;
+        margin-right: 15px;  
+        a{
+          color: var(--txt);
+          font-size: 1.1em;
+          &:nth-child(1){
+            margin: 0px 10px;
+          }
+          &:nth-child(2){
+            background-color: var(--txt);
+            color: var(--txtLight);
+            border-radius: 50px;
+            padding: 5px 10px;
+          }
+        }
       }
     }
+}
+
+
+
+@media screen and  (min-width:320px) and (max-width:480px){
+
+}
+  
+@media screen and (min-width:481px) and (max-width:750px){
+  .header{
+    padding: 0px 20px;
+    .logoBox{
+      .navigation{
+        display: none;
+      }
+    }
+    .right{
+      .searchBox{
+        padding: 0;
+        margin: 0;
+        .searchInput{
+          border: none;
+          input{
+            display: none;
+          }
+          padding: 0;
+        }
+      }
+      .account{
+        margin: 0;
+        .accountLink{
+          border-radius: 50px;
+          width: 40px;
+          height: 40px;
+          &:hover{
+            background-color: var(--bgPrimary);
+          }
+          &::before{
+            width: 100%;
+            top: 35px;
+          }
+          span{
+            display: none;
+          }
+          svg{
+            margin: 0;
+          }
+        }
+      }
+      .cartLink{
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50px;
+        &:hover{
+          background-color: var(--bgPrimary);
+        }
+        span{
+          display: none;
+        }
+        svg{
+          margin: 0;
+        }
+      }
+    }
+    .noAccount{
+      margin-right: 0px !important;
+      margin: 0px 5px !important;
+    }
+  }
+}
+  
+@media screen and (min-width:751px) and (max-width:1224px){
+  .header{
+    padding: 0px 20px;
+    .logoBox{
+      .navigation{
+        display: none;
+      }
+    }
+    .right{
+      .searchBox{
+        padding: 0;
+        margin: 0;
+        .searchInput{
+          border: none;
+          input{
+            display: none;
+          }
+          padding: 0;
+        }
+      }
+      .account{
+        margin: 0;
+        .accountLink{
+          border-radius: 50px;
+          width: 40px;
+          height: 40px;
+          &:hover{
+            background-color: var(--bgPrimary);
+          }
+          &::before{
+            width: 100%;
+            top: 35px;
+          }
+          span{
+            display: none;
+          }
+          svg{
+            margin: 0;
+          }
+        }
+      }
+      .cartLink{
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50px;
+        &:hover{
+          background-color: var(--bgPrimary);
+        }
+        span{
+          display: none;
+        }
+        svg{
+          margin: 0;
+        }
+      }
+    }
+    .noAccount{
+      margin-right: 0px !important;
+      margin: 0px 5px !important;
+    }
+  }
+}
+  
+@media screen and (min-width:1225px){
+}
+  
+@media screen and (min-width:1200px){
+
 }
