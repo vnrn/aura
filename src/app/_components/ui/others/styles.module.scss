@@ -256,7 +256,7 @@
       z-index: 999;
       background-color: var(--bg);
       padding: 40px 25px;
-      transition: left 0.2s ease;
+      transition: left 0.1s ease;
       .close{
         width: fit-content;
         display: flex;
@@ -449,12 +449,6 @@
 
 
 @media screen and  (min-width:320px) and (max-width:480px){
-  .humbSwitch{
-    display: block;
-  }
-}
-  
-@media screen and (min-width:481px) and (max-width:750px){
   .searchGrid{
     .grid{
       height: 100% !important;
@@ -507,7 +501,7 @@
   }
 }
   
-@media screen and (min-width:751px) and (max-width:1224px){
+@media screen and (min-width:481px) and (max-width:750px){
   .searchGrid{
     .grid{
       height: 100% !important;
@@ -531,8 +525,63 @@
         }
       }
       .content{
+        justify-content: flex-end;
         .defaultKeywords{
           padding-left: 30px;
+        }
+        .results{
+          flex-direction: column;
+          .keywords{
+            padding-left: 10px;
+          }
+          .products{
+            max-width: 100%;
+            width: 100%;
+            margin: 0;
+            flex-wrap: wrap;
+            margin-top: 10px;
+            .productCard{
+              width: calc(100% / 2 - 20px);
+              height: fit-content;
+              margin: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .humbSwitch{
+    display: block;
+  }
+}
+  
+@media screen and (min-width:751px) and (max-width:1224px){
+  .searchGrid{
+    .grid{
+      height: 100% !important;
+      max-height: 100% !important;
+      overflow-y: auto;
+      .header{
+        padding: 20px 20px;
+        .logo{
+          display: none;
+        }
+        .searchInput{
+          width: 100%;
+          input{
+            width: 100%;
+          }
+        }
+        .close{
+          min-width: 40px;
+          min-height: 40px;
+          margin-left: 10px;
+        }
+      }
+      .content{
+        justify-content: flex-start;
+        .defaultKeywords{
+          padding-left: 50px;
         }
         .results{
           flex-direction: column;

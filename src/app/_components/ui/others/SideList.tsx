@@ -72,7 +72,7 @@ export default function SideList({isOpen, onClose}:{
     const [isThirdCatigoryOpen, setIsThirdCatigoryOpen] = useState(false);
     const [selectedCatigory, setSelectedCatigory] = useState(0);
     return (
-        <div onClick={()=>{onClose()}} style={{
+        <div onClick={()=>{onClose(), setIsAccountListOpen(false), setIsCatigoryListOpen(false), setIsThirdCatigoryOpen(false)}} style={{
             backgroundColor: isOpen ? "rgba(0, 0, 0, 0.557)" : "transparent",
             backdropFilter: isOpen ? "blur(3px)" : "none",
             pointerEvents: isOpen ? "all" : "none"
@@ -89,7 +89,7 @@ export default function SideList({isOpen, onClose}:{
                     <div className={styles.header}>
                         <span onClick={()=>{onClose()}} className={styles.close}><X /></span>
                     </div>
-                    <h3 className={styles.account} onClick={() => {setIsAccountListOpen(true)}}><span><User2 /> Hi, vnun</span> <ChevronRight /></h3>
+                    {isLogged && <h3 className={styles.account} onClick={() => {setIsAccountListOpen(true)}}><span><User2 /> Hi, vnun</span> <ChevronRight /></h3>}
                     <div className={styles.links}>
                         {navigationData.map((navigationData, index)=>{
                             if (navigationData.isCategory) {

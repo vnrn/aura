@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Inter", sans-serif;
     text-decoration: none;
 }
 
@@ -13,4 +14,13 @@
     --txtPrimary: rgba(0, 0, 0, 0.737);
     --txtLight: white;
     --red: #FF0000;
+    --primary: #c9ff18;
+}
+
+
+body{
+    background-color: var(--bg);
+    min-height: 400vh;
+    z-index: 2s;
+    overflow-x: hidden;
 }

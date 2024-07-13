@@ -5,8 +5,12 @@
     justify-content: space-between;
     height: 70px;
     align-items: center;
-    padding: 0 80px;    
+    padding: 0 80px;  
+    position: fixed;
+    top: 0;  
+    z-index: 999;
     border-bottom: 1px solid var(--border);
+    background-color: var(--bg);
     .logoBox {
         display: flex;
         height: 100%;
@@ -65,7 +69,7 @@
           .categoryList{
             position: absolute;
             top: 110%;
-            background-color: var(--bgPriamary);
+            background-color: var(--bgPrimary);
             border: 1px solid var(--border);
             border-radius: 20px;
             display: flex;
@@ -77,9 +81,6 @@
             transform: scale(1);
             transition: all 0.2s ease;
             transition-delay: 0.05s;
-            &:hover ~ .categoryLink{
-              background-color: red;
-            }
             &:hover{
               pointer-events: all;
               opacity: 1;
@@ -293,7 +294,70 @@
 
 
 @media screen and  (min-width:320px) and (max-width:480px){
-
+  .header{
+    padding: 0px 20px;
+    .logoBox{
+      .navigation{
+        display: none;
+      }
+    }
+    .right{
+      .searchBox{
+        padding: 0;
+        margin: 0;
+        .searchInput{
+          border: none;
+          input{
+            display: none;
+          }
+          padding: 0;
+        }
+      }
+      .account{
+        margin: 0;
+        .accountLink{
+          border-radius: 50px;
+          width: 40px;
+          height: 40px;
+          &:hover{
+            background-color: var(--bgPrimary);
+          }
+          &::before{
+            width: 100%;
+            top: 35px;
+          }
+          span{
+            display: none;
+          }
+          svg{
+            margin: 0;
+          }
+        }
+      }
+      .cartLink{
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50px;
+        &:hover{
+          background-color: var(--bgPrimary);
+        }
+        span{
+          display: none;
+        }
+        svg{
+          margin: 0;
+        }
+      }
+    }
+    .noAccount{
+      margin-right: 0px !important;
+      margin: 0px 5px !important;
+      display: none !important;
+    }
+  }
 }
   
 @media screen and (min-width:481px) and (max-width:750px){

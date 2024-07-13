@@ -1,5 +1,5 @@
 "use client";
-import { Eraser, Search, X } from 'lucide-react';
+import { Delete, Eraser, Search, X } from 'lucide-react';
 import Link from 'next/link';
 import styles from './styles.module.scss'
 import { useEffect, useRef, useState } from 'react';
@@ -18,7 +18,7 @@ export default function SearchGrid({isOpen, onClose}:{
     onClose: () => void
 }) {
     const [searchValue, setSearchValue] = useState('');
-    const [gotResponse, setGotResponse] = useState(true);
+    const [gotResponse, setGotResponse] = useState(false);
     const [keywords, setKeywords] = useState(["women", "women tops", "women dresses", "men pants", "men T-shirts"]);
     const [products, setProducts] = useState([{
         title: "modern dress",
@@ -76,7 +76,7 @@ export default function SearchGrid({isOpen, onClose}:{
         return (
             <Link href={''} className={styles.productCard}>
                 <div className={styles.image}>
-                    <img src={image} alt={title} />
+                    {/* <img src={image} alt={title} /> */}
                     {hasOffer && <span>{offerPercent}% OFF</span>}
                 </div>
                 <div className={styles.info}>
@@ -96,7 +96,7 @@ export default function SearchGrid({isOpen, onClose}:{
                 <div className={styles.header}>
                     <Link className={styles.logo} href={'/'}>Aura</Link>
                     <div className={styles.searchInput}>
-                        {searchValue && <span onClick={() => setSearchValue('')}><Eraser /></span>}
+                        {searchValue && <span onClick={() => setSearchValue('')}><Delete /></span>}
                         <input ref={searchInputRef} value={searchValue} onChange={(e) => setSearchValue(e.target.value)} type="text" placeholder="Search" />
                         <span><Search /></span>
                     </div>

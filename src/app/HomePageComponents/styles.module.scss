@@ -1,0 +1,200 @@
+.heroSection{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    --gap: 7em;
+    --line: 1px;
+    --color: rgba(0, 0, 0, 0.155);
+    padding: 15vh 80px;
+    animation: start 1s ease;
+    animation-fill-mode: forwards;
+    animation-delay: 0.5s;
+    transform: all 0.5s ease;
+    overflow: hidden;
+    .leftCard {
+        width: fit-content;
+        height: 100%;
+        position: relative;
+        .imageContainer {    
+            position: relative;
+            // overflow: hidden;
+            max-height: 100%;
+            width: 340px;
+            img{
+                width: 100%;
+                object-fit: contain;
+                // max-height: 100%;
+                // filter: grayscale(5%);
+                // clip-path: polygon(0 0, 100% 0%, 100% 0%, 0 0%);
+                // animation: move 1s ease-in-out;
+                animation-fill-mode: forwards;
+                // animation-delay: 0.5s;
+                @keyframes move {
+                    0% {
+                        clip-path: polygon(0 0, 100% 0%, 100% 0%, 0 0%);
+                    }
+                    100% {
+                        clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%);
+                    }
+                }
+            }
+            .text {
+                position: absolute;
+                bottom: 35px;
+                left: 35px;
+                width: 900px;
+                h3{
+                    font-size: 1.9em;
+                    color: rgb(255, 255, 255);
+                    mix-blend-mode:difference;
+                    font-family: 'ClashDisplay-Variable';
+                    -webkit-font-smoothing: antialiased;
+                    word-spacing: 10px;
+                }
+            }
+        }
+    }
+
+    .rightSection{
+        width: 100%;
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-left: 15px;
+        // position: relative;
+        .topImage {
+            position: relative;
+            z-index: -1;
+            img{
+                object-fit: cover;
+                max-height: 290px;
+                min-width: 100%;
+                position: relative;  
+                z-index: -1;  
+          }
+          .overLay {
+            position: absolute;
+            display: flex;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            padding: 14px 25px;
+            flex-direction: column;
+            justify-content: space-between;
+            h2{
+                font-size: 4em;
+                font-family: 'ClashDisplay-Variable';
+                color: rgb(255, 255, 255);
+                font-weight: 900;
+                // mix-blend-mode: difference;
+            }
+            p{
+                font-size: 1em;
+                font-family: 'ClashDisplay-Variable';
+                color: rgb(255, 255, 255);
+                font-weight:500;
+                width: 100%;
+                text-align: end;
+            }
+          }
+        }
+        .bottomSection{
+            height: 100%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            position: relative;
+            z-index: 99;
+            .btnsBox {
+              display: flex;
+              flex-direction: column;
+              h3{
+                max-width: 300px;
+              }
+            //   max-width: 300px;
+              font-size: 1.1em;
+              width: fit-content;
+              .btns{
+                display: flex;
+                flex-direction: row;
+                margin-top: 30px;
+                width: fit-content;
+                a{
+                  display: flex;
+                  align-items: center;
+                  flex-direction: row;
+                  color: var(--txt);
+                  font-size: 1em;
+                  border-radius: 50px;
+                  border: 1px solid var(--txt);
+                  white-space: nowrap;
+                  svg{
+                    margin-left: 10px;
+                  }
+                  &:nth-child(2){
+                    margin-left: 10px;
+                    background-color: var(--txt);
+                    color: var(--txtLight);
+                    .primary{
+                        background-color: var(--txtLight) !important;
+                        color: var(--txt) !important;
+                    }
+                  }
+                  &:nth-child(1), &:nth-child(2){
+                    position: relative;
+                    overflow: hidden;
+                    height: 55px;
+                    min-width: 160px;
+                    width: 160px;
+                    .main {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: center;
+                        position: relative;
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                        transform: translateY(0%);
+                        transition: transform 0.4s ease;
+                    }
+                    .primary {
+                      position: absolute;
+                      width: 30%;
+                      overflow: hidden;
+                      height: 100%;
+                      top: 100%;
+                      left: 50%;
+                      transform: translateX(-50%);
+                      background-color: var(--txt);
+                      color: var(--txtLight);
+                      display: flex;
+                      flex-direction: row;
+                      align-items: center;
+                      justify-content: center;
+                      transition: all 0.3s;
+                      border-radius: 50px;
+                    }
+                    &:hover{
+                      .primary {
+                        width: 100%;
+                        top: 0;
+                        border-radius: 50px;
+                      }
+                      .main{
+                        transform: translateY(-100%);
+                      }
+                    }
+                  }
+                }
+            }
+            p{
+              font-size: 0.7em;
+              color: var(--txtPrimary);
+              margin-top: 10px;
+            }
+            }
+        }
+    }
+}
