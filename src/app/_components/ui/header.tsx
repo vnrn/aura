@@ -4,7 +4,7 @@ import HumbergerSwitch from './others/humbSwitch';
 import styles from './styles.module.scss'
 import { navigationData } from '@/app/_data/headerStaticData';
 import { ChevronDown, Search, ShoppingBag, User2Icon } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import SearchGrid from './others/searchGrid';
 import SideList from './others/SideList';
 
@@ -13,8 +13,42 @@ export default function Header() {
     const [isLogged, setIsLogged] = useState(false);
     const [isSearchListOpen, setIsSearchListOpen] = useState(false);
     const [isSideListOpen, setIsSideListOpen] = useState(false)
+
+    const [scrollDirection, setScrollDirection] = useState(0); // 1 for down, -1 for up
+
+  useLayoutEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY) {
+        setScrollDirection(1);
+      } else if (currentScrollY < lastScrollY) {
+        setScrollDirection(-1);
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+  const [headerVis, setHeaderVis] = useState(true)
+  useEffect(() => {
+        if(scrollDirection === 1){
+            setHeaderVis(false) 
+        }else{
+            setHeaderVis(true)
+        }
+  },[scrollDirection])
     return (
-        <header className={styles.header}>
+        <header style={{
+            top: headerVis ? '0' : '-100px',
+        }} className={styles.header}>
             <SideList isOpen={isSideListOpen} onClose={()=>{setIsSideListOpen(false)}}/>
             <div className={styles.logoBox}>
                 <HumbergerSwitch onChange={()=>{setIsSideListOpen(true)}} />

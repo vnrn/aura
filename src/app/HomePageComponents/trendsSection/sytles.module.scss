@@ -1,0 +1,90 @@
+.trendsSection{
+    width: 100%;
+    height: fit-content;
+    .title {
+      padding-left: 120px;
+    }
+}
+
+
+.catigorysSection{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .title{
+        padding-left: 120px;
+    }
+    .cardsGrid {
+      display: flex;
+      flex-direction: row;
+      padding: 0px 110px;
+      .catigoryCard {
+        position: relative;
+        width: calc((100% / 3) - 10px);
+        margin: 10px;
+        .imageContainer{
+            height: 100%;
+            overflow: hidden;
+            img{
+                object-fit: cover;
+                height: 120%;
+            }
+        }
+        a{
+            position: absolute;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            color: var(--txtLight);
+            border-radius: 50px;
+            border: 1px solid var(--txtLight);
+            white-space: nowrap;
+            font-size: 1em;
+            bottom: 25px;
+            left: 25px;
+            overflow: hidden;
+            width: 100px;
+            height: 45px;
+            .main {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                transform: translateY(0%);
+                transition: transform 0.4s ease;
+            }
+            .primary {
+              position: absolute;
+              width: 30%;
+              overflow: hidden;
+              height: 100%;
+              top: 100%;
+              left: 50%;
+              transform: translateX(-50%);
+              background-color: var(--txt);
+              color: var(--txtLight);
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: center;
+              transition: all 0.3s;
+              border-radius: 50px;
+            }
+            &:hover{
+                .primary {
+                  width: 100%;
+                  top: 0;
+                  border-radius: 50px;
+                }
+                .main{
+                  transform: translateY(-100%);
+                }
+            }
+        }
+      }
+    }
+}

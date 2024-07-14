@@ -7,6 +7,8 @@ import HeroSection from './HomePageComponents/HeroSection';
 import LocomotiveScroll from 'locomotive-scroll'
 import { useEffect, useLayoutEffect, useState } from 'react';
 import PreLoader from './preloader/preLoader';
+import TrendsSection from './HomePageComponents/trendsSection/Trends';
+import CatigorysSection from './HomePageComponents/trendsSection/Catigorys';
 
 
 export default function Home() {
@@ -14,7 +16,11 @@ export default function Home() {
   // const [pageLoad, setPageLoad] = useState(false);
   // const [achivePreloaderProgress, setAchivePreloaderProgress] = useState(false);
   useLayoutEffect(() => {
-          const scroll = new LocomotiveScroll();
+          const scroll = new LocomotiveScroll({
+            lenisOptions: {
+              duration: 0.3,
+            }
+          });
   },[])
   // useEffect(() => {
   //   document.onreadystatechange = () => {
@@ -42,6 +48,8 @@ export default function Home() {
     <main className={styles.main}>
       {/* <PreLoader onComplete={() => {setAchivePreloaderProgress(true)}} end={preloaderEnd}/> */}
         <HeroSection display={preloaderEnd} />
+        <TrendsSection />
+        <CatigorysSection />
     </main>
   );
 }
